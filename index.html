@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edge One · Singapore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --charcoal: #1c1c1c;
+        --charcoal-soft: #2e2e2e;
+        --bg: #f2efe8;
+        --bg-card: #ede9e0;
+        --gold: #c9a84c;
+        --gold-light: #d9bd7a;
+        --gold-dim: #8a7a5a;
+        --cream: #faf8f4;
+        --mid: #6b6459;
+        --rule: rgba(201, 168, 76, 0.3);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--charcoal);
+        font-family: "DM Sans", sans-serif;
+        font-weight: 300;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 56px;
+        background: rgba(242, 239, 232, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--rule);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+      .nav-logo svg {
+        display: block;
+      }
+      .nav-logo-mark {
+        display: none;
+      }
+      .nav-sg-tag {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mid);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--charcoal);
+      }
+      .nav-cta {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--charcoal);
+        background: transparent;
+        border: 1px solid var(--gold);
+        padding: 9px 22px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s;
+        text-decoration: none;
+      }
+      .nav-cta:hover {
+        background: var(--gold);
+        color: var(--cream);
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 140px 24px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-skyline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        pointer-events: none;
+        opacity: 0.06;
+      }
+      .trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--cream);
+        border: 1px solid var(--rule);
+        padding: 7px 18px 7px 12px;
+        margin-bottom: 52px;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.2s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .trust-stars {
+        display: flex;
+        gap: 2px;
+      }
+      .trust-stars span {
+        color: var(--gold);
+        font-size: 0.75rem;
+      }
+      .trust-text {
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+      }
+      .trust-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .hero-rule {
+        width: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 0 auto 52px;
+        animation: drawRule 1s 0.5s ease-out forwards;
+        position: relative;
+        z-index: 2;
+      }
+      @keyframes drawRule {
+        to {
+          width: 160px;
+        }
+      }
+      .hero-location {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.15s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-headline {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        max-width: 1150px;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.4s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-headline em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+      }
+      .hero-headline .outline-text {
+        -webkit-text-stroke: 1.5px var(--charcoal);
+        color: transparent;
+      }
+      .hero-sub {
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--mid);
+        max-width: 520px;
+        line-height: 1.8;
+        margin-bottom: 52px;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.6s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.8s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .btn-primary {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cream);
+        background: var(--charcoal);
+        border: none;
+        padding: 16px 36px;
+        cursor: pointer;
+        transition: background 0.25s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .btn-primary:hover {
+        background: var(--charcoal-soft);
+      }
+      .btn-primary svg {
+        transition: transform 0.2s;
+      }
+      .btn-primary:hover svg {
+        transform: translateX(4px);
+      }
+      .btn-secondary {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--charcoal);
+        background: transparent;
+        border: 1px solid rgba(28, 28, 28, 0.25);
+        padding: 16px 32px;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+        text-decoration: none;
+      }
+      .btn-secondary:hover {
+        border-color: var(--gold);
+        color: var(--gold-dim);
+      }
+
+      .stats-row {
+        display: flex;
+        gap: 1px;
+        max-width: 760px;
+        margin: 80px auto 0;
+        width: 100%;
+        opacity: 0;
+        animation: fadeUp 0.8s 1s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .stat-card {
+        flex: 1;
+        background: var(--cream);
+        border: 1px solid rgba(201, 168, 76, 0.18);
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        transition: border-color 0.2s;
+      }
+      .stat-card:hover {
+        border-color: var(--gold);
+      }
+      .stat-icon {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--charcoal);
+        line-height: 1;
+      }
+      .stat-num span {
+        color: var(--gold);
+        font-size: 1.4rem;
+      }
+      .stat-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      section {
+        padding: 100px 56px;
+      }
+      .section-eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .section-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 1px;
+        background: var(--gold);
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--charcoal);
+        max-width: 520px;
+        margin-bottom: 20px;
+      }
+      .section-body {
+        font-size: 0.95rem;
+        color: var(--mid);
+        max-width: 440px;
+        line-height: 1.85;
+        margin-bottom: 44px;
+      }
+
+      .sg-banner {
+        background: var(--charcoal);
+        padding: 18px 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        border-top: 1px solid rgba(201, 168, 76, 0.15);
+        flex-wrap: wrap;
+      }
+      .sg-banner-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(250, 248, 244, 0.45);
+      }
+      .sg-banner-item svg {
+        color: var(--gold);
+        flex-shrink: 0;
+      }
+      .sg-banner-divider {
+        width: 1px;
+        height: 18px;
+        background: rgba(201, 168, 76, 0.2);
+      }
+
+      .clients {
+        background: var(--bg-card);
+        padding: 60px 56px;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+      }
+      .clients-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 56px;
+        flex-wrap: wrap;
+      }
+      .clients-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .clients-logos {
+        display: flex;
+        gap: 48px;
+        align-items: center;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+      .client-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 0.95rem;
+        color: rgba(28, 28, 28, 0.3);
+        letter-spacing: 0.08em;
+        font-weight: 600;
+        transition: color 0.2s;
+        user-select: none;
+      }
+      .client-logo:hover {
+        color: var(--gold-dim);
+      }
+
+      .about {
+        background: var(--cream);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .about-panel {
+        background: var(--bg);
+        border: 1px solid var(--rule);
+        aspect-ratio: 4/3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .about-panel-num {
+        font-family: "Playfair Display", serif;
+        font-size: 5rem;
+        font-weight: 700;
+        color: var(--rule);
+        line-height: 1;
+        user-select: none;
+        position: absolute;
+        top: 20px;
+        left: 28px;
+      }
+      .about-panel-inner {
+        text-align: center;
+        padding: 40px;
+      }
+      .about-metric {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--charcoal);
+      }
+      .about-metric-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+        margin-top: 6px;
+      }
+      .about-panel-accent {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 40%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--gold));
+      }
+
+      .services {
+        background: var(--charcoal);
+        color: var(--cream);
+      }
+      .services .section-eyebrow {
+        color: var(--gold-light);
+      }
+      .services .section-eyebrow::before {
+        background: var(--gold-light);
+      }
+      .services .section-title {
+        color: var(--cream);
+      }
+      .services .section-body {
+        color: rgba(250, 248, 244, 0.55);
+      }
+      .services-header {
+        max-width: 1200px;
+        margin: 0 auto 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 40px;
+      }
+      .services-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(201, 168, 76, 0.12);
+      }
+      .service-card {
+        background: var(--charcoal-soft);
+        padding: 44px 36px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.25s;
+        cursor: default;
+      }
+      .service-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gold);
+        transition: width 0.35s ease;
+      }
+      .service-card:hover {
+        background: #252525;
+      }
+      .service-card:hover::after {
+        width: 100%;
+      }
+      .service-num {
+        font-family: "Playfair Display", serif;
+        font-size: 0.75rem;
+        color: var(--gold);
+        letter-spacing: 0.08em;
+        margin-bottom: 28px;
+      }
+      .service-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 24px;
+        color: var(--gold);
+      }
+      .service-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--cream);
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+      .service-desc {
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: rgba(250, 248, 244, 0.5);
+        line-height: 1.75;
+      }
+
+      .sectors {
+        background: var(--bg-card);
+        padding: 80px 56px;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+      }
+      .sectors-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .sectors-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        background: var(--rule);
+        margin-top: 48px;
+      }
+      .sector-chip {
+        background: var(--bg-card);
+        padding: 28px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: background 0.2s;
+      }
+      .sector-chip:hover {
+        background: var(--cream);
+      }
+      .sector-chip-icon {
+        font-size: 1.3rem;
+        line-height: 1;
+      }
+      .sector-chip-name {
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        font-weight: 500;
+        color: var(--charcoal);
+      }
+      .sector-chip-sub {
+        font-size: 0.7rem;
+        color: var(--gold-dim);
+        line-height: 1.55;
+      }
+
+      .process-wrap {
+        padding: 100px 56px;
+        background: var(--bg);
+      }
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--rule);
+        margin-top: 64px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .process-step {
+        background: var(--bg);
+        padding: 40px 28px;
+      }
+      .step-num {
+        font-family: "Playfair Display", serif;
+        font-size: 0.7rem;
+        color: var(--gold);
+        letter-spacing: 0.12em;
+        margin-bottom: 28px;
+      }
+      .step-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--charcoal);
+      }
+      .step-desc {
+        font-size: 0.82rem;
+        color: var(--mid);
+        line-height: 1.75;
+      }
+
+      .cta-section {
+        background: var(--charcoal);
+        padding: 120px 56px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-bg-rule {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1px;
+        height: 100%;
+        background: rgba(201, 168, 76, 0.08);
+      }
+      .cta-watermark {
+        position: absolute;
+        bottom: -20px;
+        right: 40px;
+        opacity: 0.04;
+        pointer-events: none;
+      }
+      .cta-section .section-eyebrow {
+        justify-content: center;
+        color: var(--gold-light);
+      }
+      .cta-section .section-eyebrow::before {
+        display: none;
+      }
+      .cta-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-weight: 700;
+        color: var(--cream);
+        max-width: 680px;
+        margin: 0 auto 20px;
+        line-height: 1.1;
+      }
+      .cta-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .cta-sub {
+        font-size: 0.95rem;
+        color: rgba(250, 248, 244, 0.45);
+        max-width: 420px;
+        margin: 0 auto 48px;
+        line-height: 1.8;
+      }
+      .cta-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-section .btn-primary {
+        background: var(--gold);
+        color: var(--charcoal);
+      }
+      .cta-section .btn-primary:hover {
+        background: var(--gold-light);
+      }
+      .cta-section .btn-secondary {
+        color: rgba(250, 248, 244, 0.6);
+        border-color: rgba(250, 248, 244, 0.2);
+      }
+      .cta-section .btn-secondary:hover {
+        border-color: var(--gold);
+        color: var(--gold-light);
+      }
+
+      footer {
+        background: #141414;
+        padding: 60px 56px 36px;
+        color: rgba(250, 248, 244, 0.35);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: rgba(250, 248, 244, 0.7);
+        letter-spacing: 0.04em;
+      }
+      .footer-logo span {
+        color: var(--gold);
+      }
+      .footer-addr {
+        font-size: 0.75rem;
+        line-height: 1.8;
+        color: rgba(250, 248, 244, 0.28);
+        letter-spacing: 0.02em;
+      }
+      .footer-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(250, 248, 244, 0.3);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+      .footer-bottom {
+        width: 100%;
+        padding-top: 28px;
+        border-top: 1px solid rgba(201, 168, 76, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footer-copy {
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+      }
+      .footer-reg {
+        font-size: 0.68rem;
+        letter-spacing: 0.04em;
+        color: rgba(250, 248, 244, 0.18);
+      }
+
+      @media (max-width: 900px) {
+        nav {
+          padding: 18px 24px;
+        }
+        .nav-links {
+          display: none;
+        }
+        section {
+          padding: 72px 24px;
+        }
+        .sg-banner {
+          padding: 14px 24px;
+          gap: 16px;
+          justify-content: flex-start;
+        }
+        .sg-banner-divider {
+          display: none;
+        }
+        .about {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 72px 24px !important;
+        }
+        .services-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .sectors {
+          padding: 60px 24px;
+        }
+        .sectors-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .process-steps {
+          grid-template-columns: 1fr 1fr;
+        }
+        .process-wrap {
+          padding: 72px 24px;
+        }
+        .cta-section {
+          padding: 80px 24px;
+        }
+        .clients {
+          padding: 40px 24px;
+        }
+        footer {
+          padding: 40px 24px 28px;
+        }
+      }
+      @media (max-width: 600px) {
+        .process-steps {
+          grid-template-columns: 1fr;
+        }
+        .stats-row {
+          flex-direction: column;
+        }
+        .sectors-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .clients-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="nav-logo" aria-label="Edge One">
+        <svg
+          width="172"
+          height="44"
+          viewBox="0 0 172 44"
+          xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(2,2)">
+            <polygon
+              points="20,0 40,11.5 40,34.5 20,46 0,34.5 0,11.5"
+              fill="none"
+              stroke="#C9A84C"
+              stroke-width="1.4" />
+            <polygon
+              points="20,6 33,13.5 33,32.5 20,40 7,32.5 7,13.5"
+              fill="none"
+              stroke="#C9A84C"
+              stroke-width="0.55"
+              opacity="0.4" />
+            <line
+              x1="20"
+              y1="0"
+              x2="20"
+              y2="46"
+              stroke="#C9A84C"
+              stroke-width="0.4"
+              opacity="0.2" />
+            <line
+              x1="0"
+              y1="11.5"
+              x2="40"
+              y2="34.5"
+              stroke="#C9A84C"
+              stroke-width="0.4"
+              opacity="0.2" />
+            <line
+              x1="40"
+              y1="11.5"
+              x2="0"
+              y2="34.5"
+              stroke="#C9A84C"
+              stroke-width="0.4"
+              opacity="0.2" />
+            <polygon
+              points="20,15 28,20 28,32 20,37 12,32 12,20"
+              fill="#C9A84C"
+              opacity="0.9" />
+          </g>
+          <text
+            x="52"
+            y="20"
+            font-family="'DM Sans','Helvetica Neue',Arial,sans-serif"
+            font-size="17"
+            font-weight="700"
+            letter-spacing="2.5"
+            fill="#1c1c1c">
+            EDGE
+            <tspan fill="#C9A84C">ONE</tspan>
+          </text>
+          <line
+            x1="52"
+            y1="26"
+            x2="170"
+            y2="26"
+            stroke="#C9A84C"
+            stroke-width="0.6"
+            opacity="0.4" />
+          <text
+            x="52"
+            y="37"
+            font-family="'DM Sans','Helvetica Neue',Arial,sans-serif"
+            font-size="6"
+            font-weight="400"
+            letter-spacing="2.5"
+            fill="#8a7a5a">
+            DUO TOWER · SINGAPORE
+          </text>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Book a Call</a>
+    </nav>
+
+    <section class="hero">
+      <!-- Marina Bay Skyline silhouette -->
+      <svg
+        class="hero-skyline"
+        viewBox="0 0 1440 300"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMax meet">
+        <rect x="0" y="295" width="1440" height="5" fill="#1C1C1C" />
+        <rect x="0" y="230" width="55" height="65" fill="#1C1C1C" />
+        <rect x="58" y="195" width="40" height="100" fill="#1C1C1C" />
+        <rect x="100" y="215" width="28" height="80" fill="#1C1C1C" />
+        <rect x="130" y="175" width="48" height="120" fill="#1C1C1C" />
+        <rect x="180" y="205" width="32" height="90" fill="#1C1C1C" />
+        <ellipse cx="255" cy="262" rx="28" ry="16" fill="#1C1C1C" />
+        <ellipse cx="300" cy="257" rx="25" ry="14" fill="#1C1C1C" />
+        <rect x="355" y="95" width="36" height="200" fill="#1C1C1C" />
+        <rect x="398" y="106" width="36" height="189" fill="#1C1C1C" />
+        <rect x="441" y="115" width="36" height="180" fill="#1C1C1C" />
+        <rect x="347" y="87" width="178" height="20" rx="10" fill="#1C1C1C" />
+        <rect
+          x="360"
+          y="70"
+          width="152"
+          height="18"
+          rx="4"
+          fill="#C9A84C"
+          opacity="0.35" />
+        <rect x="555" y="148" width="30" height="147" fill="#1C1C1C" />
+        <rect x="591" y="128" width="26" height="167" fill="#1C1C1C" />
+        <rect x="622" y="165" width="22" height="130" fill="#1C1C1C" />
+        <rect x="649" y="138" width="38" height="157" fill="#1C1C1C" />
+        <rect x="735" y="198" width="7" height="97" fill="#1C1C1C" />
+        <ellipse cx="738" cy="193" rx="22" ry="13" fill="#1C1C1C" />
+        <rect x="772" y="207" width="7" height="88" fill="#1C1C1C" />
+        <ellipse cx="775" cy="202" rx="19" ry="11" fill="#1C1C1C" />
+        <rect x="806" y="215" width="7" height="80" fill="#1C1C1C" />
+        <ellipse cx="809" cy="211" rx="17" ry="10" fill="#1C1C1C" />
+        <rect x="855" y="158" width="33" height="137" fill="#1C1C1C" />
+        <rect x="894" y="175" width="28" height="120" fill="#1C1C1C" />
+        <rect x="928" y="195" width="26" height="100" fill="#1C1C1C" />
+        <rect x="958" y="165" width="40" height="130" fill="#1C1C1C" />
+        <rect x="1004" y="185" width="33" height="110" fill="#1C1C1C" />
+        <rect x="1075" y="218" width="38" height="77" fill="#1C1C1C" />
+        <rect x="1120" y="197" width="28" height="98" fill="#1C1C1C" />
+        <rect x="1155" y="235" width="48" height="60" fill="#1C1C1C" />
+        <rect x="1220" y="205" width="36" height="90" fill="#1C1C1C" />
+        <rect x="1263" y="222" width="42" height="73" fill="#1C1C1C" />
+        <rect x="1320" y="242" width="120" height="53" fill="#1C1C1C" />
+      </svg>
+
+      <div class="hero-location">
+        <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
+          <path
+            d="M5 0C2.8 0 1 1.8 1 4C1 7 5 12 5 12C5 12 9 7 9 4C9 1.8 7.2 0 5 0Z"
+            stroke="#C9A84C"
+            stroke-width="1"
+            fill="none" />
+          <circle cx="5" cy="4" r="1.5" fill="#C9A84C" />
+        </svg>
+        Marina Bay, Singapore &middot; APAC Hub
+      </div>
+
+      <div class="trust-badge">
+        <div class="trust-stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span
+          ><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <div class="trust-dot"></div>
+        <span class="trust-text"
+          >Trusted by 20+ Innovative Clients Across Asia</span
+        >
+      </div>
+
+      <div class="hero-rule"></div>
+
+      <h1 class="hero-headline">
+        Singapore&rsquo;s Strategic Partner for <em>AI Digital</em>
+        <span class="outline-text">Solutions</span>
+      </h1>
+
+      <p class="hero-sub">
+        We help bold APAC organisations unlock the power of AI at scale aligned
+        with Singapore&rsquo;s Smart Nation vision to accelerate digital
+        transformation and build ventures designed for lasting growth.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          Book Free Consultation
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M2 7H12M8 3L12 7L8 11"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="#about" class="btn-secondary">Our Journey</a>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M2 12L6 8L9 11L14 4"
+                stroke="#C9A84C"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="stat-num">40<span>+</span></div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6" stroke="#C9A84C" stroke-width="1.2" />
+              <path
+                d="M8 4.5V8L10.5 10"
+                stroke="#C9A84C"
+                stroke-width="1.2"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="stat-num">3<span>&ndash;28</span></div>
+          <div class="stat-label">Days to Launch</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 2L9.8 6.2L14.5 6.7L11 9.8L12 14.4L8 12L4 14.4L5 9.8L1.5 6.7L6.2 6.2L8 2Z"
+                stroke="#C9A84C"
+                stroke-width="1.2"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="stat-num">99<span>%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SG CREDENTIALS BANNER -->
+    <div class="sg-banner">
+      <div class="sg-banner-item">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M6 1L11 3.5V8.5L6 11L1 8.5V3.5L6 1Z"
+            stroke="#C9A84C"
+            stroke-width="1"
+            fill="none" />
+        </svg>
+        MAS-Aligned AI Governance
+      </div>
+      <div class="sg-banner-divider"></div>
+      <div class="sg-banner-item">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <circle cx="6" cy="6" r="5" stroke="#C9A84C" stroke-width="1" />
+          <path
+            d="M3 6h6M6 3v6"
+            stroke="#C9A84C"
+            stroke-width="1"
+            stroke-linecap="round" />
+        </svg>
+        Smart Nation Programme Partner
+      </div>
+      <div class="sg-banner-divider"></div>
+      <div class="sg-banner-item">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <rect
+            x="1"
+            y="3"
+            width="10"
+            height="7"
+            rx="1"
+            stroke="#C9A84C"
+            stroke-width="1" />
+          <path d="M4 3V2a2 2 0 014 0v1" stroke="#C9A84C" stroke-width="1" />
+        </svg>
+        PDPA Compliant
+      </div>
+      <div class="sg-banner-divider"></div>
+      <div class="sg-banner-item">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path
+            d="M2 9L6 3L10 9H2Z"
+            stroke="#C9A84C"
+            stroke-width="1"
+            fill="none"
+            stroke-linejoin="round" />
+        </svg>
+        EnterpriseSG Recognised
+      </div>
+    </div>
+
+    <!-- CLIENTS -->
+    <div class="clients">
+      <div class="clients-inner">
+        <span class="clients-label">Singapore &amp; APAC Clients</span>
+        <div class="clients-logos">
+          <span class="client-logo">CapitaLand</span>
+          <span class="client-logo">GovTech</span>
+          <span class="client-logo">DBS Ventures</span>
+          <span class="client-logo">Grab</span>
+          <span class="client-logo">ST Engineering</span>
+          <span class="client-logo">Temasek</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about" class="about" style="padding: 100px 56px">
+      <div class="about-content">
+        <div class="section-eyebrow">Who We Are</div>
+        <h2 class="section-title">Built in Singapore. Built for Asia.</h2>
+        <p class="section-body">
+          Edge One is a boutique AI consultancy headquartered at Marina Bay. We
+          bridge cutting-edge machine intelligence with the nuanced realities of
+          Southeast Asian markets regulatory, cultural, and commercial so your
+          AI investment delivers from day one.
+        </p>
+        <p class="section-body" style="margin-top: -24px">
+          As a recognised participant in Singapore&rsquo;s Smart Nation
+          initiative, we bring public-sector rigour to private-sector ambition
+          across the APAC region.
+        </p>
+        <a href="#contact" class="btn-primary" style="display: inline-flex">
+          Explore Our Story
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M2 7H12M8 3L12 7L8 11"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div class="about-visual">
+        <div class="about-panel">
+          <div class="about-panel-num">N</div>
+          <div class="about-panel-inner">
+            <div class="about-metric">S$3.1B</div>
+            <div class="about-metric-label">Value Generated for Clients</div>
+          </div>
+          <div class="about-panel-accent"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="services-header">
+        <div>
+          <div class="section-eyebrow">What We Do</div>
+          <h2 class="section-title" style="color: var(--cream)">
+            Where intelligence meets execution
+          </h2>
+        </div>
+        <p class="section-body" style="margin-bottom: 0">
+          Six disciplines, one seamless delivery. Each shaped by deep APAC
+          market experience and Singapore&rsquo;s world-class regulatory
+          environment.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+            <circle cx="21" cy="21" r="16" stroke="#C9A84C" stroke-width="1" />
+            <path
+              d="M14 21C14 17.134 17.134 14 21 14C24.866 14 28 17.134 28 21"
+              stroke="#C9A84C"
+              stroke-width="1"
+              stroke-linecap="round" />
+            <circle cx="21" cy="21" r="3" fill="#C9A84C" />
+          </svg>
+          <div class="service-title">AI Strategy &amp; Roadmap</div>
+          <p class="service-desc">
+            A clear path from today to intelligent automation aligned with MAS
+            guidelines and Singapore&rsquo;s National AI Strategy 2.0. No
+            buzzwords, just results.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+            <rect
+              x="8"
+              y="8"
+              width="11"
+              height="11"
+              stroke="#C9A84C"
+              stroke-width="1" />
+            <rect
+              x="23"
+              y="8"
+              width="11"
+              height="11"
+              stroke="#C9A84C"
+              stroke-width="1" />
+            <rect
+              x="8"
+              y="23"
+              width="11"
+              height="11"
+              stroke="#C9A84C"
+              stroke-width="1" />
+            <rect
+              x="23"
+              y="23"
+              width="11"
+              height="11"
+              stroke="#C9A84C"
+              stroke-width="1" />
+          </svg>
+          <div class="service-title">Machine Learning Solutions</div>
+          <p class="service-desc">
+            Custom models for APAC&rsquo;s unique landscape. Mandarin and Malay
+            NLP, regional fintech fraud detection, logistics optimisation for
+            the Port of Singapore.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+            <path
+              d="M21 8L34 16V26L21 34L8 26V16L21 8Z"
+              stroke="#C9A84C"
+              stroke-width="1" />
+            <path
+              d="M21 14L28 18.5V27.5L21 32L14 27.5V18.5L21 14Z"
+              stroke="#C9A84C"
+              stroke-width="0.5" />
+          </svg>
+          <div class="service-title">Generative AI Integration</div>
+          <p class="service-desc">
+            LLM deployment and RAG systems with multilingual support for
+            English, Mandarin, Malay, and Tamil built for Singapore&rsquo;s
+            cosmopolitan market.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+            <path
+              d="M8 34L8 18M16 34L16 24M24 34L24 14M32 34L32 8"
+              stroke="#C9A84C"
+              stroke-width="1"
+              stroke-linecap="round" />
+          </svg>
+          <div class="service-title">Data &amp; Analytics Platform</div>
+          <p class="service-desc">
+            PDPA-compliant data infrastructure for Singapore enterprises. Hosted
+            locally on AWS Singapore and GCP Asia-Pacific regions by default.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+            <path
+              d="M21 8V21M21 21L30 12M21 21L12 12"
+              stroke="#C9A84C"
+              stroke-width="1"
+              stroke-linecap="round" />
+            <path
+              d="M10 28H32"
+              stroke="#C9A84C"
+              stroke-width="1"
+              stroke-linecap="round" />
+            <path
+              d="M14 34H28"
+              stroke="#C9A84C"
+              stroke-width="1"
+              stroke-linecap="round" />
+          </svg>
+          <div class="service-title">Process Automation</div>
+          <p class="service-desc">
+            Intelligent automation tailored to Singapore&rsquo;s tight labour
+            market freeing your team for higher-value work while keeping costs
+            competitive across SEA.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+            <circle cx="21" cy="21" r="13" stroke="#C9A84C" stroke-width="1" />
+            <path
+              d="M21 8C21 8 28 14.5 28 21C28 27.5 21 34 21 34"
+              stroke="#C9A84C"
+              stroke-width="0.75" />
+            <path d="M8 21H34" stroke="#C9A84C" stroke-width="1" />
+            <path d="M10 15H32M10 27H32" stroke="#C9A84C" stroke-width="0.75" />
+          </svg>
+          <div class="service-title">AI Venture Studio</div>
+          <p class="service-desc">
+            For bold founders we co-build AI-native ventures from concept to
+            launch, positioned to qualify for EntrePass, Startup SG Founder, and
+            IMDA grants.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTORS -->
+    <div id="sectors" class="sectors">
+      <div class="sectors-inner">
+        <div class="section-eyebrow">Industries We Serve</div>
+        <h2 class="section-title">
+          Deep roots across Singapore&rsquo;s key economic pillars
+        </h2>
+        <div class="sectors-grid">
+          <div class="sector-chip">
+            <div class="sector-chip-icon">&#127968;</div>
+            <div class="sector-chip-name">Financial Services</div>
+            <div class="sector-chip-sub">
+              MAS-regulated. Fraud detection, credit risk, wealth AI for
+              SGX-listed firms.
+            </div>
+          </div>
+          <div class="sector-chip">
+            <div class="sector-chip-icon">&#127973;</div>
+            <div class="sector-chip-name">Healthcare &amp; Biotech</div>
+            <div class="sector-chip-sub">
+              MOH-aware. Diagnostics AI, clinical NLP, Biopolis research
+              partnerships.
+            </div>
+          </div>
+          <div class="sector-chip">
+            <div class="sector-chip-icon">&#127959;</div>
+            <div class="sector-chip-name">Real Estate &amp; PropTech</div>
+            <div class="sector-chip-sub">
+              Smart building analytics, URA-data-informed valuation, tenant AI
+              for REITs.
+            </div>
+          </div>
+          <div class="sector-chip">
+            <div class="sector-chip-icon">&#128674;</div>
+            <div class="sector-chip-name">Logistics &amp; Trade</div>
+            <div class="sector-chip-sub">
+              Port of Singapore optimisation, supply chain intelligence, customs
+              AI for Tuas.
+            </div>
+          </div>
+          <div class="sector-chip">
+            <div class="sector-chip-icon">&#127963;</div>
+            <div class="sector-chip-name">Government &amp; Public Sector</div>
+            <div class="sector-chip-sub">
+              Smart Nation-aligned. Citizen services, predictive policy,
+              GovTech-standard security.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESS -->
+    <div class="process-wrap" id="process">
+      <div style="max-width: 1200px; margin: 0 auto">
+        <div class="section-eyebrow">How We Work</div>
+        <h2 class="section-title">From first call to full deployment</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">Phase I</div>
+          <div class="step-title">Discovery</div>
+          <p class="step-desc">
+            Deep-dive into your business context, data landscape, and APAC
+            opportunity horizon. We ask the questions no one else does including
+            the regulatory ones.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">Phase II</div>
+          <div class="step-title">Architecture</div>
+          <p class="step-desc">
+            A bespoke technical blueprint for Singapore&rsquo;s cloud-first,
+            compliance-conscious environment. Maximum value, minimum regulatory
+            risk.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">Phase III</div>
+          <div class="step-title">Build &amp; Validate</div>
+          <p class="step-desc">
+            Rapid iteration with your team embedded. Working software in days
+            tested against real regional data, multilingual edge cases, and PDPA
+            constraints.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">Phase IV</div>
+          <div class="step-title">Launch &amp; Scale</div>
+          <p class="step-desc">
+            Production deployment on Singapore-hosted infrastructure, MAS and
+            PDPA compliance sign-off, and a handover so your team owns it from
+            day one.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+      <div class="cta-bg-rule"></div>
+      <svg
+        class="cta-watermark"
+        width="220"
+        height="220"
+        viewBox="0 0 220 220"
+        fill="none">
+        <path
+          d="M90 110C90 80 110 40 110 40C110 40 70 65 70 110C70 155 110 180 110 180C110 180 90 140 90 110Z"
+          fill="#FAF8F4" />
+        <circle cx="148" cy="75" r="6" fill="#FAF8F4" />
+        <circle cx="165" cy="100" r="5" fill="#FAF8F4" />
+        <circle cx="152" cy="128" r="5.5" fill="#FAF8F4" />
+        <circle cx="128" cy="142" r="4.5" fill="#FAF8F4" />
+        <circle cx="108" cy="134" r="5" fill="#FAF8F4" />
+      </svg>
+      <div class="section-eyebrow">Begin</div>
+      <h2 class="cta-title">
+        Ready to build Singapore&rsquo;s next <em>AI advantage?</em>
+      </h2>
+      <p class="cta-sub">
+        A 30-minute call at our Marina Bay office &mdash; or over Zoom &mdash;
+        is all it takes to discover what AI can unlock for your organisation
+        across Asia.
+      </p>
+      <div class="cta-actions">
+        <a href="mailto:hello@edgeone.sg" class="btn-primary">
+          Book Free Consultation
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M2 7H12M8 3L12 7L8 11"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="#services" class="btn-secondary">View Services</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-col">
+        <div class="footer-logo">Edge <span>One</span></div>
+        <div class="footer-addr">
+          Duo Tower, 3 Fraser Street #04-23A<br />
+          Singapore 189352<br /><br />
+          hello@edgeone.sg &nbsp;&middot;&nbsp; +65 6123 4567
+        </div>
+      </div>
+      <div class="footer-col">
+        <ul class="footer-links" style="flex-direction: column; gap: 14px">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" style="max-width: 260px">
+        <div class="footer-addr" style="font-size: 0.68rem; line-height: 1.85">
+          Edge One is registered in Singapore (UEN: 202400001Z). We operate in
+          accordance with the Monetary Authority of Singapore&rsquo;s AI
+          governance guidelines and the Personal Data Protection Act 2012
+          (PDPA).
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; 2026 Edge One. &middot; Singapore &middot; All rights reserved.
+        </div>
+        <div class="footer-reg">
+          Smart Nation Partner &middot; MAS AI Governance &middot; EnterpriseSG
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

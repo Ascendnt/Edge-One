@@ -1,0 +1,23 @@
+<svg width="200" height="52" viewBox="0 0 200 52" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Edge1</title>
+  <desc>Edge1 logo — hexagon mark with dark wordmark for light backgrounds</desc>
+
+  <!-- Hexagon mark -->
+  <g transform="translate(2, 2)">
+    <polygon points="24,0 48,14 48,40 24,54 0,40 0,14" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+    <polygon points="24,7 40,17 40,37 24,47 8,37 8,17" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.45"/>
+    <line x1="24" y1="0" x2="24" y2="54" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+    <line x1="0" y1="14" x2="48" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+    <line x1="48" y1="14" x2="0" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+    <polygon points="24,17 34,23 34,35 24,41 14,35 14,23" fill="#C9A84C" opacity="0.9"/>
+  </g>
+
+  <!-- Wordmark: EDGE in dark, 1 in gold -->
+  <text x="62" y="24" font-family="'DM Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#1c1c1c">EDGE<tspan fill="#C9A84C">1</tspan></text>
+
+  <!-- Rule -->
+  <line x1="62" y1="31" x2="198" y2="31" stroke="#C9A84C" stroke-width="0.7" opacity="0.45"/>
+
+  <!-- Subline -->
+  <text x="62" y="43" font-family="'DM Sans','Helvetica Neue',Arial,sans-serif" font-size="6.5" font-weight="400" letter-spacing="3" fill="#8a7a5a">DUO TOWER · SINGAPORE</text>
+</svg>
